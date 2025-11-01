@@ -1,7 +1,7 @@
 /* Bootstrap v5 custom color scheme + component tweaks
+   Bootstrap CSS is loaded via CDN in head.html before this file.
+   This file overrides Bootstrap CSS variables and adds custom styles.
 */
-
-@import "bootstrap/bootstrap";
 
 /* =============================
    Color Tokens (PNW palette)
@@ -13,12 +13,6 @@
   --pnw-stone: #c7d2cc; /* river stone */
 
   /* Brand accents */
-  --pnw-lake-300: #8cb0be;
-  --pnw-lake-300-rgb: 140, 176, 190;
-  --pnw-lake-400: #6d9aac;
-  --pnw-lake-400-rgb: 109, 154, 172;
-  --pnw-lake-500: #4d859a;
-  --pnw-lake-500-rgb: 77, 133, 154;
   --pnw-lake-600: #2e6f88;
   --pnw-lake-600-rgb: 46, 111, 136;
   --pnw-lake-700: #255a6d;

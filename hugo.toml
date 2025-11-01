@@ -7,6 +7,11 @@ title = 'Nelson Tech Meetup'
 description = 'A community of technology and knowledge workers in the Kootenays'
 heroImage = 'images/kast-tech-meet-up-02.jpg'
 
+# GitHub repository for "Edit this page" links
+[params.github]
+repo = 'https://github.com/Nelson-Tech-Meetup/nelson-tech-meetup.github.io'
+branch = 'main'
+
 [[menu.main]]
 name = 'Home'
 url = '/'
@@ -18,7 +23,5 @@ url = '/meetings/'
 weight = 2
 
 [module]
-[[module.imports]]
-path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
 [[module.imports]]
 path = "github.com/KKKZOZ/hugo-admonitions"
