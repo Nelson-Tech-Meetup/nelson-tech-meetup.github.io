@@ -89,7 +89,7 @@
           </div>
         </div>
       {{ else }}
-        <div class="alert alert-info text-center">
+        <div class="alert alert-info text-end">
           <h3>No upcoming meetings scheduled</h3>
           <p class="mb-0">Check back soon for our next event!</p>
         </div>
@@ -100,6 +100,11 @@
     {{ if .Content }}
       <section class="about-section p-5">
         {{ .Content }}
+
+        <!-- Edit this page link -->
+        <div class="mt-4 pt-3 border-top text-end">
+          {{ partial "edit-page-link.html" . }}
+        </div>
       </section>
     {{ end }}
 
