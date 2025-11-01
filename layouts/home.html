@@ -1,0 +1,134 @@
+{{ define "main" }}
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero-section position-relative">
+      {{ if site.Params.heroImage }}
+        <div class="position-relative">
+          {{ $heroImg := resources.Get site.Params.heroImage }}
+          {{ if $heroImg }}
+            <img
+              src="{{ $heroImg.RelPermalink }}"
+              class="img-fluid w-100"
+              alt="{{ site.Title }}"
+              style="max-height: 500px; object-fit: cover"
+            />
+          {{ else }}
+            <img
+              src="{{ site.Params.heroImage }}"
+              class="img-fluid w-100"
+              alt="{{ site.Title }}"
+              style="max-height: 500px; object-fit: cover"
+            />
+          {{ end }}
+          <div
+            class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+            style="background: rgba(0, 0, 0, 0.4)"
+          >
+            <div class="text-center text-white">
+              <h1 class="display-3 fw-bold">{{ site.Title }}</h1>
+              <p class="lead fs-4">{{ site.Params.description }}</p>
+            </div>
+          </div>
+        </div>
+      {{ else }}
+        <div class="bg-primary text-white py-5">
+          <h1 class="display-3 fw-bold">{{ site.Title }}</h1>
+          <p class="lead fs-4">{{ site.Params.description }}</p>
+        </div>
+      {{ end }}
+    </section>
+
+    <!-- Next Meeting Callout -->
+    <section class="next-meeting-section py-5">
+      {{ $nextMeeting := false }}
+      {{ $now := now }}
+      {{ $meetingsSection :=
+        site.GetPage "/meetings"
+      }}
+      {{ if $meetingsSection }}
+        {{ $futureMeetings :=
+          where $meetingsSection.Pages ".Date" ">=" $now
+        }}
+        {{ range
+          $futureMeetings.ByDate
+        }}
+          {{ if not $nextMeeting }}
+            {{ $nextMeeting = . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ if $nextMeeting }}
+        <div class="card border-primary shadow-lg">
+          <div class="card-body p-4">
+            <div class="row align-items-center">
+              <h2 class="card-title h4 mb-3">
+                <i class="bi bi-calendar-event me-2"></i>Next Meeting
+              </h2>
+              <h3 class="h2 mb-3">
+                <a href="{{ $nextMeeting.RelPermalink }}">
+                  {{ $nextMeeting.Title }}
+                </a>
+              </h3>
+              <p class="lead text-muted mb-3">
+                <i class="bi bi-clock me-2"></i>{{ $nextMeeting.Date.Format
+                  "Monday, January 2, 2006"
+                }}
+                {{ with $nextMeeting.Params.time }}at {{ . }}{{ end }}
+              </p>
+              {{ with $nextMeeting.Params.location }}
+                <p class="mb-3">
+                  <i class="bi bi-geo-alt me-2"></i>
+                  {{ if reflect.IsMap . }}
+                    {{ .name }}
+                  {{ else }}
+                    {{ . }}
+                  {{ end }}
+                </p>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      {{ else }}
+        <div class="alert alert-info text-center">
+          <h3>No upcoming meetings scheduled</h3>
+          <p class="mb-0">Check back soon for our next event!</p>
+        </div>
+      {{ end }}
+    </section>
+
+    <!-- About Section -->
+    {{ if .Content }}
+      <section class="about-section p-5">
+        {{ .Content }}
+      </section>
+    {{ end }}
+
+
+    <!-- Past Meetings Preview -->
+    <section class="past-meetings-preview py-5">
+      <h2 class="h1 mb-4">Past Meetings</h2>
+      <div class="row g-4">
+        {{ $now := now }}
+        {{ range first 3 (where (where site.RegularPages
+          "Section" "meetings") ".Date" "<" $now).ByDate.Reverse
+        }}
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="text-muted small mb-2">
+                  {{ .Date.Format "Jan 2, 2006" }}
+                </div>
+                <h3 class="card-title h5">
+                  <a href="{{ .RelPermalink }}" class="text-decoration-none">{{ .Title }}</a>
+                </h3>
+              </div>
+            </div>
+          </div>
+        {{ end }}
+      </div>
+      <div class="text-center mt-4">
+        <a href="/meetings/" class="btn btn-outline-primary">View All Meetings</a>
+      </div>
+    </section>
+  </div>
+{{ end }}

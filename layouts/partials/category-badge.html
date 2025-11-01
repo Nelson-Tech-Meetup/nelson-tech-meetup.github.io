@@ -1,0 +1,10 @@
+{{- $category := lower . -}}
+{{- $badgeClass := "bg-secondary" -}}
+{{- if eq $category "ai" -}}
+  {{- $badgeClass = "bg-primary" -}}
+{{- else if eq $category "tech" -}}
+  {{- $badgeClass = "bg-info" -}}
+{{- else if eq $category "social" -}}
+  {{- $badgeClass = "bg-success" -}}
+{{- end -}}
+<span class="badge {{ $badgeClass }}">{{ $category }}</span>

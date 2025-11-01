@@ -1,0 +1,332 @@
+/* Bootstrap v5 custom color scheme + component tweaks
+*/
+
+@import "bootstrap/bootstrap";
+
+/* =============================
+   Color Tokens (PNW palette)
+   ============================= */
+:root {
+  /* Neutrals */
+  --pnw-ink: #1f2a2e; /* deep slate */
+  --pnw-fog: #f2f5f4; /* overcast fog */
+  --pnw-stone: #c7d2cc; /* river stone */
+
+  /* Brand accents */
+  --pnw-lake-300: #8cb0be;
+  --pnw-lake-300-rgb: 140, 176, 190;
+  --pnw-lake-400: #6d9aac;
+  --pnw-lake-400-rgb: 109, 154, 172;
+  --pnw-lake-500: #4d859a;
+  --pnw-lake-500-rgb: 77, 133, 154;
+  --pnw-lake-600: #2e6f88;
+  --pnw-lake-600-rgb: 46, 111, 136;
+  --pnw-lake-700: #255a6d;
+  --pnw-lake-700-rgb: 37, 90, 109;
+  --pnw-lake-800: #1f4b5b;
+  --pnw-lake-800-rgb: 31, 75, 91;
+
+  --pnw-moss-600: #6b8f71; /* mossy green */
+  --pnw-moss-600-rgb: 107, 143, 113;
+  --pnw-moss-700: #56745c;
+  --pnw-moss-700-rgb: 86, 116, 92;
+  --pnw-moss-800: #435b49;
+  --pnw-moss-800-rgb: 67, 91, 73;
+
+  --pnw-cedar-500: #b7835a; /* cedar/copper */
+  --pnw-cedar-500-rgb: 183, 131, 90;
+  --pnw-cedar-600: #9f6f4c;
+  --pnw-cedar-600-rgb: 159, 111, 76;
+
+  /* Support tints */
+  --pnw-sage-100: #e4efe9; /* soft panel bg */
+  --pnw-sage-100-rgb: 228, 239, 233;
+  --pnw-sage-200: #d4e6de;
+  --pnw-sage-200-rgb: 212, 230, 222;
+
+  /* Bootstrap variable overrides */
+  color-scheme: light dark; /* hint UA for native form controls */
+  --bs-body-bg: var(--pnw-fog);
+  --bs-body-color: var(--pnw-ink);
+  --bs-border-color: var(--pnw-stone);
+
+  --bs-primary: var(--pnw-lake-600);
+  --bs-primary-rgb: var(--pnw-lake-600-rgb);
+  --bs-secondary: var(--pnw-moss-600);
+  --bs-secondary-rgb: var(--pnw-moss-600-rgb);
+
+  --bs-success: var(--pnw-moss-600);
+  --bs-success-rgb: var(--pnw-moss-600-rgb);
+
+  // Links
+  --bs-link-color: var(--pnw-lake-600);
+  --bs-link-color-rgb: var(--pnw-lake-600-rgb);
+  --bs-link-hover-color: var(--pnw-lake-800);
+  --bs-link-hover-color-rgb: var(--pnw-lake-800-rgb);
+
+  /* Optional emphasis + selection */
+  --bs-emphasis-color: #0e1517; /* for headings on light */
+  --bs-highlight-bg: #fff3cd; /* keep default warning highlight */
+}
+
+/* =============================
+   Typography & Layout
+   ============================= */
+body {
+  font-family:
+    "Ubuntu Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  text-rendering: optimizeLegibility;
+}
+
+.container {
+  max-width: 1000px;
+}
+
+/* Full-bleed hero */
+.hero-section {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+/* =============================
+   Cards & Hover affordances
+   ============================= */
+.hover-shadow {
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  will-change: transform, box-shadow;
+}
+
+.hover-shadow:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.12) !important;
+}
+
+.card {
+  background-color: #ffffff;
+}
+
+/* Meeting card stretched link support */
+.card .stretched-link {
+  position: relative;
+}
+
+/* Next meeting callout styling */
+.next-meeting-section .card {
+  border-width: 2px;
+}
+
+/* =============================
+   Navigation (PNW glass bar)
+   ============================= */
+.navbar {
+  color: whitesmoke;
+  background-color: rgba(31, 59, 45, 0.88) !important; /* evergreen */
+  -webkit-backdrop-filter: saturate(125%) blur(6px);
+  backdrop-filter: saturate(125%) blur(6px);
+}
+
+.navbar.navbar-dark .nav-link:hover,
+.navbar.navbar-dark .nav-link:focus {
+  color: var(--pnw-cedar-500);
+}
+.navbar.navbar-dark .nav-link.active {
+  color: var(--pnw-cedar-500);
+  font-weight: 700;
+}
+
+/* =============================
+   Links & Focus styles
+   ============================= */
+a {
+  text-underline-offset: 2px;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--bs-primary), white 30%);
+  outline-offset: 2px;
+}
+
+/* =============================
+   Navbar
+   ============================= */
+.navbar-brand,
+.nav-link {
+  --bs-navbar-brand-color: var(--pnw-fog);
+  --bs-navbar-brand-hover-color: var(--pnw-stone);
+  --bs-nav-link-color: var(--pnw-fog);
+  --bs-nav-link-hover-color: var(--pnw-stone);
+}
+
+/* =============================
+   Buttons (ensure AA contrast)
+   ============================= */
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--pnw-lake-600);
+  --bs-btn-border-color: var(--pnw-lake-700);
+  --bs-btn-hover-bg: var(--pnw-lake-700);
+  --bs-btn-hover-border-color: var(--pnw-lake-800);
+  --bs-btn-active-bg: var(--pnw-lake-800);
+  --bs-btn-active-border-color: var(--pnw-lake-800);
+  --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+}
+
+.btn-secondary {
+  --bs-btn-color: #0e1517; /* dark text on moss */
+  --bs-btn-bg: var(--pnw-moss-600);
+  --bs-btn-border-color: var(--pnw-moss-700);
+  --bs-btn-hover-bg: var(--pnw-moss-700);
+  --bs-btn-hover-border-color: var(--pnw-moss-800);
+  --bs-btn-active-bg: var(--pnw-moss-800);
+  --bs-btn-active-border-color: var(--pnw-moss-800);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--pnw-lake-700);
+  --bs-btn-border-color: var(--pnw-lake-700);
+  --bs-btn-hover-bg: var(--pnw-lake-700);
+  --bs-btn-hover-color: #fff;
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: var(--pnw-moss-700);
+  --bs-btn-border-color: var(--pnw-moss-700);
+  --bs-btn-hover-bg: var(--pnw-moss-700);
+  --bs-btn-hover-color: #0e1517;
+}
+
+.badge.bg-primary {
+  --bs-badge-color: var(--pnw-fog);
+}
+
+/* =============================
+   Meeting meta styling
+   ============================= */
+.meeting-meta {
+  font-size: 1rem;
+}
+.meeting-meta dt {
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+.meeting-meta dt:first-of-type {
+  margin-top: 0;
+}
+.meeting-meta dd {
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+}
+
+/* =============================
+   Meeting navigation / list hover
+   ============================= */
+.meeting-navigation a {
+  display: block;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition:
+    background-color 0.2s,
+    transform 0.15s ease-in-out;
+}
+.meeting-navigation a:hover {
+  background-color: color-mix(in oklab, var(--pnw-sage-200), white 20%);
+  transform: translateY(-2px);
+}
+
+/* =============================
+   Footer
+   ============================= */
+footer {
+  margin-top: auto;
+  padding: 2rem 0;
+  border-top: 1px solid var(--bs-border-color);
+  background-color: #ffffff;
+}
+
+/* =============================
+   Responsive type tweaks
+   ============================= */
+@media (max-width: 768px) {
+  .display-3 {
+    font-size: 2.5rem;
+  }
+  .display-4 {
+    font-size: 2rem;
+  }
+}
+
+/* =============================
+   Full-height page scaffold
+   ============================= */
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
+
+/* =============================
+   Utility: subtle panels + overlays
+   ============================= */
+.panel-sage {
+  background-color: var(--pnw-sage-100);
+  border: 1px solid var(--pnw-stone);
+}
+.overlay-lake {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(46, 111, 136, 0.55), rgba(46, 111, 136, 0.15));
+}
+
+/* =============================
+   Dark Mode — honors user preference
+   ============================= */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bs-body-bg: var(--pnw-ink);
+    --bs-body-color: var(--pnw-fog);
+    --bs-border-color: #233a32; /* dark stone */
+
+    --bs-primary: #6ab0c5; /* brighter lake for contrast */
+    --bs-primary-rgb: 106, 176, 197;
+    --bs-secondary: #7fb08f; /* brighter moss */
+    --bs-secondary-rgb: 127, 176, 143;
+
+    --bs-secondary-color: var(--pnw-stone);
+
+    --bs-link-color: #8bd3e6;
+    --bs-link-color-rgb: 139, 211, 230;
+    --bs-link-hover-color: #6fb8cd;
+    --bs-link-hover-color-rgb: 111, 184, 205;
+  }
+
+  .admonition-content {
+    background-color: #101b19 !important;
+    color: var(--pnw-stone) !important;
+  }
+
+  .card {
+    background-color: #101b19;
+    border-color: var(--bs-border-color);
+  }
+  footer {
+    background-color: #0f1715;
+  }
+  .navbar {
+    background-color: rgba(15, 23, 21, 0.9) !important;
+  }
+  .meeting-navigation a:hover {
+    background-color: color-mix(in oklab, #16302a, #0f1715 20%);
+  }
+}

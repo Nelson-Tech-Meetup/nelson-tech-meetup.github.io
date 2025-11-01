@@ -1,0 +1,24 @@
+baseURL = 'https://example.org/'
+buildFuture = true
+languageCode = 'en-us'
+title = 'Nelson Tech Meetup'
+
+[params]
+description = 'A community of technology and knowledge workers in the Kootenays'
+heroImage = 'images/kast-tech-meet-up-02.jpg'
+
+[[menu.main]]
+name = 'Home'
+url = '/'
+weight = 1
+
+[[menu.main]]
+name = 'Meetings'
+url = '/meetings/'
+weight = 2
+
+[module]
+[[module.imports]]
+path = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
+[[module.imports]]
+path = "github.com/KKKZOZ/hugo-admonitions"

@@ -1,0 +1,58 @@
+{{ define "main" }}
+  <div class="meetings-list">
+    <div class="container py-5">
+      <!-- Page Header -->
+      <header class="mb-5">
+        <h1 class="display-4 mb-3">{{ .Title }}</h1>
+        {{ if .Content }}
+          <div class="lead text-muted">{{ .Content }}</div>
+        {{ end }}
+      </header>
+
+      {{ $now := now }}
+      {{ $upcomingMeetings := where .Pages ".Date" ">=" $now }}
+      {{ $pastMeetings := where .Pages ".Date" "<" $now }}
+
+
+      <!-- Upcoming Meetings -->
+      {{ if $upcomingMeetings }}
+        <section class="upcoming-meetings mb-5">
+          <h2 class="h2 mb-4">
+            <i class="bi bi-calendar-plus text-primary me-2"></i>Upcoming Meetings
+          </h2>
+          <div class="row g-4">
+            {{ range $upcomingMeetings.ByDate }}
+              <div class="col-md-6 col-lg-4">
+                {{ partial "meeting-card.html" (dict "meeting" . "isPast" false) }}
+              </div>
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+
+
+      <!-- Past Meetings -->
+      {{ if $pastMeetings }}
+        <section class="past-meetings">
+          <h2 class="h2 mb-4">
+            <i class="bi bi-calendar-check text-secondary me-2"></i>Past Meetings
+          </h2>
+          <div class="row g-4">
+            {{ range $pastMeetings.ByDate.Reverse }}
+              <div class="col-md-6 col-lg-4">
+                {{ partial "meeting-card.html" (dict "meeting" . "isPast" true) }}
+              </div>
+            {{ end }}
+          </div>
+        </section>
+      {{ else }}
+        {{ if not $upcomingMeetings }}
+          <div class="alert alert-info text-center">
+            <h3>No meetings yet</h3>
+            <p class="mb-0">Check back soon for upcoming events!</p>
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+{{ end }}
