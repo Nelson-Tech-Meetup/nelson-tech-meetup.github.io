@@ -199,8 +199,11 @@ a:hover {
 }
 
 /* =============================
-   Meeting meta styling
+   Meeting styling
    ============================= */
+.meeting-content p {
+  margin-bottom: 2rem;
+}
 .meeting-meta {
   font-size: 1rem;
 }
