@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://nelson-tech-meetup.github.io/'
 buildFuture = true
 languageCode = 'en-us'
 title = 'Nelson Tech Meetup'
@@ -9,8 +9,8 @@ heroImage = 'images/kast-tech-meet-up-02.jpg'
 
 # GitHub repository for "Edit this page" links
 [params.github]
-repo = 'https://github.com/Nelson-Tech-Meetup/nelson-tech-meetup.github.io'
 branch = 'main'
+repo = 'https://github.com/Nelson-Tech-Meetup/nelson-tech-meetup.github.io'
 
 [[menu.main]]
 name = 'Home'
