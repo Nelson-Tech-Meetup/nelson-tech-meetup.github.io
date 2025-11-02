@@ -16,9 +16,9 @@ Join us for engaging talks, hands-on workshops, and relaxed networking in Nelson
 
 ## Get In Touch
 
-Join the conversation via:
+Join the conversation:
 
-- [Signup to our Newsletter](https://stats.sender.net/forms/eZP5Jb/view)
+- Newsletter: [Signup](https://stats.sender.net/forms/eZP5Jb/view)
 - Slack: [Kootenay Tech](https://join.slack.com/t/kootenaytech/shared_invite/zt-2gtyd3f1g-Ty3RV4zkgsQCInq5V6nRSg)
 - Facebook: [Kootenay Tech & Knowledge Workers](https://www.facebook.com/groups/kootenayworkers)
 - Email: `meetup@nelson.social`
