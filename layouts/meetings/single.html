@@ -56,10 +56,14 @@
             <dt><i class="bi bi-calendar-event text-primary me-2"></i>Date</dt>
             <dd>{{ .Date.Format "Monday, January 2, 2006" }}</dd>
 
-            {{ with .Params.time }}
-              <dt><i class="bi bi-clock text-primary me-2"></i>Time</dt>
-              <dd>{{ . }}</dd>
-            {{ end }}
+            <dt><i class="bi bi-clock text-primary me-2"></i>Time</dt>
+            <dd>
+              {{ if .Params.time }}
+                {{ .Params.time }}
+              {{ else }}
+                {{ .Date.Format "3:04 PM" }}
+              {{ end }}
+            </dd>
 
             {{ if .Params.location }}
               <dt><i class="bi bi-geo-alt text-primary me-2"></i>Location</dt>
