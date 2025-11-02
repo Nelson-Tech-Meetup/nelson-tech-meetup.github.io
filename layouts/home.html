@@ -3,28 +3,28 @@
     <!-- Hero Section -->
     <section class="hero-section position-relative">
       {{ if site.Params.heroImage }}
-        <div class="position-relative">
+        <div class="position-relative" style="min-height: 300px; height: 30vh;">
           {{ $heroImg := resources.Get site.Params.heroImage }}
           {{ if $heroImg }}
             <img
               src="{{ $heroImg.RelPermalink }}"
-              class="img-fluid w-100"
+              class="w-100 h-100"
               alt="{{ site.Title }}"
-              style="max-height: 500px; object-fit: cover"
+              style="object-fit: cover; position: absolute; top: 0; left: 0;"
             />
           {{ else }}
             <img
               src="{{ site.Params.heroImage }}"
-              class="img-fluid w-100"
+              class="w-100 h-100"
               alt="{{ site.Title }}"
-              style="max-height: 500px; object-fit: cover"
+              style="object-fit: cover; position: absolute; top: 0; left: 0;"
             />
           {{ end }}
           <div
             class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
             style="background: rgba(0, 0, 0, 0.4)"
           >
-            <div class="text-center text-white">
+            <div class="text-center text-white px-3">
               <h1 class="display-3 fw-bold">{{ site.Title }}</h1>
               <p class="lead fs-4">{{ site.Params.description }}</p>
             </div>
@@ -98,7 +98,7 @@
 
     <!-- About Section -->
     {{ if .Content }}
-      <section class="about-section p-5">
+      <section class="about-section p-2 p-md-5">
         {{ .Content }}
 
         <!-- Edit this page link -->

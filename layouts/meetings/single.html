@@ -1,157 +1,151 @@
 {{ define "main" }}
   <article class="meeting-single">
-    <div class="container py-5">
-      <div class="col">
-        <!-- Meeting Header -->
-        <div class="row justify-content-center">
-          <a href="/meetings/" class="text-decoration-none">
-            <i class="bi bi-arrow-left me-2"></i>
-            <span>Back to all meetings</span>
-          </a>
-          <header class="mb-5">
-            <h1 class="display-4 mb-3">{{ .Title }}</h1>
+    <div class="container py-2 py-md-5">
+      <!-- Meeting Header -->
+      <div class="row justify-content-center">
+        <a href="/meetings/" class="text-decoration-none">
+          <i class="bi bi-arrow-left me-2"></i>
+          <span>Back to all meetings</span>
+        </a>
+        <header class="mb-5 mt-3">
+          <h1 class="display-4 mb-3">{{ .Title }}</h1>
 
-            {{ with .Params.category }}
-              {{ partial "category-badge.html" . }}
-            {{ end }}
-          </header>
-        </div>
+          {{ with .Params.category }}
+            {{ partial "category-badge.html" . }}
+          {{ end }}
+        </header>
+      </div>
 
-        <div class="row justify-content-center">
-          <div class="col">
-            <!-- Meeting Content -->
-            <div class="meeting-content mb-5">
-              {{ .Content }}
-            </div>
+      <div class="row justify-content-center">
+        <div class="col-md">
+          <!-- Meeting Content -->
+          <div class="meeting-content mb-5">
+            {{ .Content }}
+          </div>
 
-            <!-- Speakers Section -->
-            {{ with .Params.speakers }}
-              <section class="speakers-section mb-5">
-                <h2 class="h3 mb-4">Speakers</h2>
-                <div class="row g-4">
-                  {{ range . }}
-                    <div class="col-md-6">
-                      <div class="card h-100">
-                        <div class="card-body">
-                          <h3 class="h5 card-title">{{ .name }}</h3>
-                          {{ with .bio }}
-                            <p class="card-text text-muted">{{ . }}</p>
-                          {{ end }}
-                          {{ with .website }}
-                            <a
-                              href="{{ . }}"
-                              target="_blank"
-                              class="btn btn-sm btn-outline-primary"
-                            >
-                              <i class="bi bi-link-45deg"></i> Website
-                            </a>
-                          {{ end }}
-                        </div>
+          <!-- Speakers Section -->
+          {{ with .Params.speakers }}
+            <section class="speakers-section mb-5">
+              <h2 class="h3 mb-4">Speakers</h2>
+              <div class="row g-4">
+                {{ range . }}
+                  <div class="col-md-6">
+                    <div class="card h-100">
+                      <div class="card-body">
+                        <h3 class="h5 card-title">{{ .name }}</h3>
+                        {{ with .bio }}
+                          <p class="card-text text-muted">{{ . }}</p>
+                        {{ end }}
+                        {{ with .website }}
+                          <a href="{{ . }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-link-45deg"></i> Website
+                          </a>
+                        {{ end }}
                       </div>
                     </div>
-                  {{ end }}
-                </div>
-              </section>
-            {{ end }}
-          </div>
-
-          <div class="col-4">
-            <!-- Meeting details -->
-            <dl class="meeting-meta mb-4">
-              <dt><i class="bi bi-calendar-event text-primary me-2"></i>Date</dt>
-              <dd>{{ .Date.Format "Monday, January 2, 2006" }}</dd>
-
-              {{ with .Params.time }}
-                <dt><i class="bi bi-clock text-primary me-2"></i>Time</dt>
-                <dd>{{ . }}</dd>
-              {{ end }}
-
-              {{ if .Params.location }}
-                <dt><i class="bi bi-geo-alt text-primary me-2"></i>Location</dt>
-                <dd>
-                  {{ if reflect.IsMap .Params.location }}
-                    <p class="mb-0">{{ .Params.location.name }}</p>
-                    <p>{{ .Params.location.address }}</p>
-                    <p class="text-muted fst-italic">{{ .Params.location.instructions }}</p>
-                  {{ else }}
-                    {{ .Params.location }}
-                  {{ end }}
-                </dd>
-              {{ end }}
-            </dl>
-
-            <!-- Map Section -->
-            {{ if .Params.location }}
-              {{ $address := "" }}
-              {{ if reflect.IsMap .Params.location }}
-                {{ $address = .Params.location.address }}
-              {{ else }}
-                {{ $address = .Params.location }}
-              {{ end }}
-              {{ if $address }}
-                <div
-                  class="meeting-map mb-4"
-                  style="border: 1px solid var(--kootenay-grey); border-radius: 0.25rem; overflow: hidden"
-                >
-                  <div class="map-container" style="width: 100%; height: 250px">
-                    <iframe
-                      width="100%"
-                      height="100%"
-                      style="border: 0"
-                      loading="lazy"
-                      allowfullscreen
-                      referrerpolicy="no-referrer-when-downgrade"
-                      src="https://maps.google.com/maps?q={{ $address | urlquery }}&output=embed"
-                    ></iframe>
                   </div>
-                </div>
-              {{ end }}
-            {{ end }}
-
-
-            <!-- Resources Section -->
-            {{ with .Params.resources }}
-              <section class="resources-section mb-5">
-                <h2 class="h3 mb-4">Resources</h2>
-                <ul class="list-group">
-                  {{ range . }}
-                    <li class="list-group-item">
-                      <a href="{{ .url }}" target="_blank" class="text-decoration-none">
-                        <i class="bi bi-link-45deg me-2"></i>{{ .title }}
-                      </a>
-                    </li>
-                  {{ end }}
-                </ul>
-              </section>
-            {{ end }}
-          </div>
-
-          <div class="text-end">
-            {{ partial "edit-page-link.html" . }}
-          </div>
-
-          <!-- Navigation -->
-          <nav class="meeting-navigation mt-5 pt-4 border-top">
-            <div class="row">
-              <div class="col-6">
-                {{ with .PrevInSection }}
-                  <a href="{{ .RelPermalink }}" class="text-decoration-none">
-                    <div class="text-muted small">Previous Meeting</div>
-                    <div class="text-primary">{{ .Title }}</div>
-                  </a>
                 {{ end }}
               </div>
-              <div class="col-6 text-end">
-                {{ with .NextInSection }}
-                  <a href="{{ .RelPermalink }}" class="text-decoration-none">
-                    <div class="text-muted small">Next Meeting</div>
-                    <div class="text-primary">{{ .Title }}</div>
-                  </a>
-                {{ end }}
-              </div>
-            </div>
-          </nav>
+            </section>
+          {{ end }}
         </div>
+
+        <div class="col-md-4">
+          <!-- Meeting details -->
+          <dl class="meeting-meta mb-4">
+            <dt><i class="bi bi-calendar-event text-primary me-2"></i>Date</dt>
+            <dd>{{ .Date.Format "Monday, January 2, 2006" }}</dd>
+
+            {{ with .Params.time }}
+              <dt><i class="bi bi-clock text-primary me-2"></i>Time</dt>
+              <dd>{{ . }}</dd>
+            {{ end }}
+
+            {{ if .Params.location }}
+              <dt><i class="bi bi-geo-alt text-primary me-2"></i>Location</dt>
+              <dd>
+                {{ if reflect.IsMap .Params.location }}
+                  <p class="mb-0">{{ .Params.location.name }}</p>
+                  <p>{{ .Params.location.address }}</p>
+                  <p class="text-muted fst-italic">{{ .Params.location.instructions }}</p>
+                {{ else }}
+                  {{ .Params.location }}
+                {{ end }}
+              </dd>
+            {{ end }}
+          </dl>
+
+          <!-- Map Section -->
+          {{ if .Params.location }}
+            {{ $address := "" }}
+            {{ if reflect.IsMap .Params.location }}
+              {{ $address = .Params.location.address }}
+            {{ else }}
+              {{ $address = .Params.location }}
+            {{ end }}
+            {{ if $address }}
+              <div
+                class="meeting-map mb-4"
+                style="border: 1px solid var(--kootenay-grey); border-radius: 0.25rem; overflow: hidden"
+              >
+                <div class="map-container" style="width: 100%; height: 250px">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    style="border: 0"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://maps.google.com/maps?q={{ $address | urlquery }}&output=embed"
+                  ></iframe>
+                </div>
+              </div>
+            {{ end }}
+          {{ end }}
+
+
+          <!-- Resources Section -->
+          {{ with .Params.resources }}
+            <section class="resources-section mb-5">
+              <h2 class="h3 mb-4">Resources</h2>
+              <ul class="list-group">
+                {{ range . }}
+                  <li class="list-group-item">
+                    <a href="{{ .url }}" target="_blank" class="text-decoration-none">
+                      <i class="bi bi-link-45deg me-2"></i>{{ .title }}
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            </section>
+          {{ end }}
+        </div>
+
+        <div class="text-end">
+          {{ partial "edit-page-link.html" . }}
+        </div>
+
+        <!-- Navigation -->
+        <nav class="meeting-navigation mt-5 pt-4 border-top">
+          <div class="row">
+            <div class="col-6">
+              {{ with .PrevInSection }}
+                <a href="{{ .RelPermalink }}" class="text-decoration-none">
+                  <div class="text-muted small">Previous Meeting</div>
+                  <div class="text-primary">{{ .Title }}</div>
+                </a>
+              {{ end }}
+            </div>
+            <div class="col-6 text-end">
+              {{ with .NextInSection }}
+                <a href="{{ .RelPermalink }}" class="text-decoration-none">
+                  <div class="text-muted small">Next Meeting</div>
+                  <div class="text-primary">{{ .Title }}</div>
+                </a>
+              {{ end }}
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
   </article>
