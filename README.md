@@ -11,7 +11,7 @@ If using the Hugo CLI, the following command will generate an empty meeting file
 hugo new content content/meetings/2026-12-12.md  # use meeting date
 ```
 
-Otherwise, a meeting could be created manually within the [GitHub UI](https://github.com/Nelson-Tech-Meetup/nelson-tech-meetup.github.io/new/main/content/meetings) or a code editor.
+Alternatively, a meeting can be created manually within the [GitHub UI](https://github.com/Nelson-Tech-Meetup/nelson-tech-meetup.github.io/new/main/content/meetings) or a code editor.
 
 Each meeting file starts with YAML front matter that defines the meeting metadata:
 
