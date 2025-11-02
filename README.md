@@ -39,15 +39,12 @@ resources:
 
 ## Development
 
-Contributions are welcome! Please make contributions in the form of a well described [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+Contributions are welcome! Please make contributions in the form of a well-described [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
-For simple content changes, consider using the "Edit this page on GitHub" link on any page to suggest changes directly.
-
+For simple content changes, consider using the "Edit this page" link on any page to suggest changes directly.
 
 > [!IMPORTANT]
 > Running locally requires [Hugo Extended](https://gohugo.io/installation/) (v0.152.2 or later) to be installed.
-
-
 
 ## Deployment
 
@@ -58,4 +55,4 @@ The site is automatically built and deployed to GitHub Pages using GitHub Action
 - **Daily schedule**: Rebuilds every day at midnight Pacific Time (8 AM UTC) to keep the "upcoming" vs "past" meetings current
 
 > [!TIP]
-> Deployments are typically live within 60 seconds.
+> Deployments are typically live within 40 seconds.
