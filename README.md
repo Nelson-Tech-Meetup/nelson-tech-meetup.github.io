@@ -2,9 +2,16 @@
 
 A static website for the Nelson Tech Meetup community, built with [Hugo](https://gohugo.io/) and [Bootstrap 5](https://getbootstrap.com/), and automatically deployed to GitHub Pages.
 
-## Creating Meeting Content
+## Adding Meetings
 
 Meeting content is stored in the `content/meetings/` directory as Markdown files. Each meeting is a separate file named with the meeting date in `YYYY-MM-DD.md` format.
+
+If using the Hugo CLI, the following command will generate an empty meeting file:
+```
+hugo new content content/meetings/2026-12-12.md  # use meeting date
+```
+
+Otherwise, a meeting could be created manually within the [GitHub UI](https://github.com/Nelson-Tech-Meetup/nelson-tech-meetup.github.io/new/main/content/meetings) or a code editor.
 
 Each meeting file starts with YAML front matter that defines the meeting metadata:
 
@@ -36,7 +43,11 @@ Contributions are welcome! Please make contributions in the form of a well descr
 
 For simple content changes, consider using the "Edit this page on GitHub" link on any page to suggest changes directly.
 
-Running locally requires [Hugo Extended](https://gohugo.io/installation/) (v0.152.2 or later) to be installed.
+
+> [!IMPORTANT]
+> Running locally requires [Hugo Extended](https://gohugo.io/installation/) (v0.152.2 or later) to be installed.
+
+
 
 ## Deployment
 
@@ -45,3 +56,6 @@ The site is automatically built and deployed to GitHub Pages using GitHub Action
 - **Push to `main` branch**: Immediately builds and deploys the site
 - **Manual trigger**: Via the Actions tab in GitHub
 - **Daily schedule**: Rebuilds every day at midnight Pacific Time (8 AM UTC) to keep the "upcoming" vs "past" meetings current
+
+> [!TIP]
+> Deployments are typically live within 60 seconds.
