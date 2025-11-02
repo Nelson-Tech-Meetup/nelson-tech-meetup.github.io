@@ -70,7 +70,7 @@
                 </a>
               </h3>
               <div class="d-flex flex-wrap gap-3 text-muted">
-                <span class="text-nowrap flex-fill">
+                <span class="text-nowrap flex-fill text-truncate">
                   <i class="bi bi-clock me-2"></i>
                   {{ $nextMeeting.Date.Format "Monday, January 2, 2006" }}
                   at
@@ -81,7 +81,7 @@
                   {{ end }}
                 </span>
                 {{ with $nextMeeting.Params.location }}
-                  <span class="text-nowrap flex-fill">
+                  <span class="text-nowrap flex-fill text-truncate">
                     <i class="bi bi-geo-alt me-2"></i>
                     {{ if reflect.IsMap . }}
                       {{ .name }}
