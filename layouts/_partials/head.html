@@ -5,6 +5,9 @@
   {{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}
 </title>
 
+<!-- OpenGraph & SEO Meta Tags -->
+{{ partial "opengraph.html" . }}
+
 <!-- Google Fonts - Ubuntu Mono -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
