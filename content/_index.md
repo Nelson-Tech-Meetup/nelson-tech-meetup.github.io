@@ -18,8 +18,8 @@ Join us for engaging talks, hands-on workshops, and relaxed networking in Nelson
 
 Join the conversation:
 
-- Newsletter: [Signup](https://stats.sender.net/forms/eZP5Jb/view)
-- Slack: [Kootenay Tech](https://join.slack.com/t/kootenaytech/shared_invite/zt-2gtyd3f1g-Ty3RV4zkgsQCInq5V6nRSg)
-- Facebook: [Kootenay Tech & Knowledge Workers](https://www.facebook.com/groups/kootenayworkers)
+- Newsletter: [Signup]({{% param "links.newsletter" %}})
+- Slack: [Kootenay Tech]({{% param "links.slack" %}})
+- Facebook: [Kootenay Tech & Knowledge Workers]({{% param "links.facebook" %}})
 - Email: `meetup@nelson.social`
-- Github: [`@nelson-tech-meetup`](https://github.com/nelson-tech-meetup)
+- Github: [`@nelson-tech-meetup`]({{% param "links.github" %}})

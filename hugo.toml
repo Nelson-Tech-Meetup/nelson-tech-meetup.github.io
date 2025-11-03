@@ -7,6 +7,12 @@ title = 'Nelson Tech Meetup'
 description = 'A community of technology and knowledge workers in the Kootenays'
 heroImage = 'images/kast-tech-meet-up-02.jpg'
 
+[params.links]
+facebook = 'https://www.facebook.com/groups/kootenayworkers'
+github = 'https://github.com/nelson-tech-meetup'
+newsletter = 'https://stats.sender.net/forms/eZP5Jb/view'
+slack = 'https://join.slack.com/t/kootenaytech/shared_invite/zt-2gtyd3f1g-Ty3RV4zkgsQCInq5V6nRSg'
+
 # GitHub repository for "Edit this page" links
 [params.github]
 branch = 'main'
