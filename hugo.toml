@@ -1,4 +1,3 @@
-baseURL = 'https://nelson-tech-meetup.github.io/'
 buildFuture = true
 languageCode = 'en-us'
 title = 'Nelson Tech Meetup'
