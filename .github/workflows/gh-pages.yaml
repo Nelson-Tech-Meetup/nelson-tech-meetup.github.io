@@ -56,19 +56,20 @@ jobs:
       - name: Build
         env:
           HUGO_ENV: production
-        run: hugo build \
-          --gc \
-          --minify \
-          --baseURL "${{ steps.pages.outputs.base_url }}/" \
+        run: >
+          hugo build
+          --gc
+          --minify
+          --baseURL "${{ steps.pages.outputs.base_url }}/"
           --cacheDir "${{ runner.temp }}/hugo_cache"
-      
+
       - name: Cache save
         id: cache-save
         uses: actions/cache/save@v4
         with:
           path: ${{ runner.temp }}/hugo_cache
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
