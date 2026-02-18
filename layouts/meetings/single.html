@@ -1,5 +1,26 @@
 {{ define "main" }}
   <article class="meeting-single">
+    {{- with .Params.image -}}
+      {{- $heroImg := resources.Get . -}}
+      {{- if $heroImg -}}
+        <div class="position-relative" style="min-height: 250px; height: 25vh;">
+          <img
+            src="{{ $heroImg.RelPermalink }}"
+            class="w-100 h-100"
+            alt="{{ $.Title }}"
+            style="object-fit: cover; position: absolute; top: 0; left: 0;"
+          />
+          <div
+            class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
+            style="background: rgba(0, 0, 0, 0.4)"
+          >
+            <div class="text-center text-white px-3">
+              <h1 class="display-4 fw-bold">{{ $.Title }}</h1>
+            </div>
+          </div>
+        </div>
+      {{- end -}}
+    {{- end -}}
     <div class="container py-2 mt-1">
       <!-- Meeting Header -->
       <div class="row justify-content-center">
@@ -8,7 +29,9 @@
           <span>Back to all meetings</span>
         </a>
         <header class="my-4">
+          {{ if not .Params.image }}
           <h1 class="display-4 mb-3">{{ .Title }}</h1>
+          {{ end }}
 
           <div class="">
             {{ with .Params.category }}
