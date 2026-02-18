@@ -2,6 +2,7 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 time: "6:00 PM - 8:00 PM"  # Display time (optional)
+# image: "images/example.jpg"  # Banner image in assets/ (optional)
 category: tech             # Category: ai, tech, or social
 location:
   name: Nelson Innovation Centre

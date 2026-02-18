@@ -21,13 +21,22 @@
   {{- $imageAlt = .Title -}}
 
   {{- if eq .Section "meetings" -}}
-    {{- /* Use hero image for meetings */ -}}
-    {{- with site.Params.heroImage -}}
-      {{- $heroImg := resources.Get . -}}
-      {{- if $heroImg -}}
-        {{- $image = $heroImg.Permalink -}}
+    {{- /* Use per-event image if available, otherwise fall back to hero image */ -}}
+    {{- with .Params.image -}}
+      {{- $eventImg := resources.Get . -}}
+      {{- if $eventImg -}}
+        {{- $image = $eventImg.Permalink -}}
       {{- else -}}
         {{- $image = (printf "%s%s" site.BaseURL .) -}}
+      {{- end -}}
+    {{- else -}}
+      {{- with site.Params.heroImage -}}
+        {{- $heroImg := resources.Get . -}}
+        {{- if $heroImg -}}
+          {{- $image = $heroImg.Permalink -}}
+        {{- else -}}
+          {{- $image = (printf "%s%s" site.BaseURL .) -}}
+        {{- end -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
