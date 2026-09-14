@@ -1,0 +1,17 @@
+name: github pages (daily rebuild)
+
+on:
+  # Rebuild daily at midnight Pacific Time (8 AM UTC). This keeps the concept of past/future meetings up-to-date.
+  schedule:
+    - cron: "0 8 * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    uses: ./.github/workflows/gh-pages.yaml

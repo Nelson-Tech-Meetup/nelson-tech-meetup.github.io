@@ -9,9 +9,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  # Runs daily at midnight Pacific Time (8 AM UTC). This keeps the concept of past/future meetings up-to-date
-  schedule:
-    - cron: "0 8 * * *"
+  # Called by gh-pages-daily.yaml. The daily cron lives in its own file because
+  # GitHub disables any workflow containing `schedule:` after 60 days of repo
+  # inactivity -- which would take deploys-on-push down with it.
+  workflow_call:
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
